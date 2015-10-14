@@ -1,0 +1,23 @@
+/*******************************************
+FONTS
+*******************************************/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+/*******************************************
+SETTINGS
+*******************************************/
+@charset "utf-8";
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+/*******************************************
+BODY
+*******************************************/
+body{
+  font-family: 'Open Sans', Arial, Tahoma;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #363636;
+}
