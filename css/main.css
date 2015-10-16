@@ -33,6 +33,23 @@ body{
   font-size: 20px;
   font-weight: 700;
   color: #66757f;
+  letter-spacing: 0.02em;
+}
+
+.container .header span{
+
+}
+
+.container .header span a{
+  text-decoration: none;
+  color: #7b7b7b;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 0.03em;
+}
+
+.container .header span:hover a{
+  color: #333;
 }
 
 .container ul{
@@ -55,8 +72,38 @@ body{
 }
 
 .container ul li .username{
-  color: #292f33;
   font-weight: 700;
+}
+
+.container ul li .username a{
+  text-decoration: none;
+  color: #333;
+}
+
+.container ul li .username:hover a{
+  color: #337ab7;
+}
+
+.container ul li .overlay{
+  position: absolute;
+  width: 400px;
+  height: 0px;
+  opacity: 0;
+}
+
+.container ul li:hover .overlay{
+  opacity: 1;
+}
+
+.container ul li .overlay a{
+  float: right;
+  text-decoration: none;
+  color: #ccd6dd;
+  font-size: 20px;
+}
+
+.container ul li .overlay a:hover{
+  color: #337ab7;
 }
 
 .container ul li .acc-info span{
