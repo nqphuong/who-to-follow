@@ -114,15 +114,15 @@ var suggestion3Stream = close3ClickStream.startWith('statup click') //Evol5: add
 
 //Subscribe suggestion stream
 suggestion1Stream.subscribe(function(suggestion){
-    //renderSuggestion(suggestion, '.sugg1');
+    renderSuggestion(suggestion, '.sugg1');
 });
 
 suggestion2Stream.subscribe(function(suggestion){
-    //renderSuggestion(suggestion, '.sugg2');
+    renderSuggestion(suggestion, '.sugg2');
 });
 
 suggestion3Stream.subscribe(function(suggestion){
-    //renderSuggestion(suggestion, '.sugg3');
+    renderSuggestion(suggestion, '.sugg3');
 });
 
 function renderSuggestion(suggestion, classname) {
@@ -136,8 +136,26 @@ function renderSuggestion(suggestion, classname) {
         $(classname + ' .username a').attr("href", suggestion.html_url);
         $(classname + ' .username a').text(suggestion.login);
         $(classname + ' .follow').attr("href", "unknown");
+        
+        //Get relative info
+        var followerStream = Rx.Observable.fromPromise(jQuery.getJSON(suggestion.followers_url));
+        followerStream.subscribe(function(response){
+            $(classname + ' .relation .followers strong').text(response.length);
+        });
+        
+        var starredStream = Rx.Observable.fromPromise(jQuery.getJSON( suggestion.starred_url.replace('{/owner}{/repo}', '')));
+        starredStream.subscribe(function(response){
+            $(classname + ' .relation .starred strong').text(response.length);
+        });
+        
+        var followingStream = Rx.Observable.fromPromise(jQuery.getJSON(suggestion.following_url.replace('{/other_user}','')));
+        followingStream.subscribe(function(response){
+            $(classname + ' .relation .followings strong').text(response.length);
+        });
+        
+        //console.log(followers);
     }
     
-    console.log(parentElement);
-    console.log(parentElement2);
+    //console.log(parentElement);
+    //console.log(parentElement2);
 }
