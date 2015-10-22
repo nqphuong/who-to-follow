@@ -25,7 +25,7 @@ body{
 .container{
   padding: 5px 10px;
   border: #ccc solid 1px;
-  width: 500px;
+  width: 600px;
   border-radius: 5px;
 }
 
@@ -58,7 +58,8 @@ body{
 }
 
 .container li{
-  padding-bottom: 10px;
+  padding-bottom: 40px;
+  clear: both;
 }
 
 .container ul li .avatar{
@@ -73,6 +74,7 @@ body{
 
 .container ul li .username{
   font-weight: 700;
+  padding-bottom: 5px;
 }
 
 .container ul li .username a{
@@ -106,6 +108,10 @@ body{
   color: #337ab7;
 }
 
+.container ul li .acc-info{
+  float: left;
+}
+
 .container ul li .acc-info span{
   font-size: 17px;
   color: #fff;
@@ -115,8 +121,10 @@ body{
   color: #fff;
   font-size: 15px;
   border-radius: 5px;
+  padding: 3px 10px 3px 10px;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+  text-decoration: none;
   border: 1px solid #5ca941;
   background-color: #60b044;
   background-image: -webkit-linear-gradient(#8add6d, #60b044);
@@ -131,4 +139,27 @@ body{
   cursor: pointer;
 }
 
-//New commits from MacOS
+.container ul li .relation{
+  display: inline-flex;
+  margin-top: 4px;
+  clear: both;
+}
+
+.container ul li .relation .rel-item{
+  margin-left: 15px;
+  width: 33.33%;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.container ul li .relation strong{
+  font-size: 28px;
+  font-weight: 700;
+  color: #4078c0;
+}
+
+.container ul li .relation div{
+  color: #767676;
+  font-size: 11px;
+}
