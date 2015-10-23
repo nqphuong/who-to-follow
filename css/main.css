@@ -27,6 +27,7 @@ body{
   border: #ccc solid 1px;
   width: 450px;
   border-radius: 5px;
+  margin-top: 20px;
 }
 
 .container .header{
