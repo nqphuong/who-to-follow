@@ -1,7 +1,7 @@
-var refreshButton = document.querySelector('.refresh');
-var closeButton1 = document.querySelector('.close1');
-var closeButton2 = document.querySelector('.close2');
-var closeButton3 = document.querySelector('.close3');
+var refreshButton = document.querySelector('.rxjs .refresh');
+var closeButton1 = document.querySelector('.rxjs .close1');
+var closeButton2 = document.querySelector('.rxjs .close2');
+var closeButton3 = document.querySelector('.rxjs .close3');
 
 var refreshClickStream = Rx.Observable.fromEvent(refreshButton, 'click');
 var close1ClickStream = Rx.Observable.fromEvent(closeButton1, 'click');
@@ -49,10 +49,10 @@ requestStream.subscribe(function(requestUrl){
 //And the .flatMap() helps us to get simple stream responses instead of the pointer in .map()
 var responseStream = requestStream.flatMap(function(requestUrl){
         return Rx.Observable.fromPromise(jQuery.getJSON(requestUrl));
-    });
+});
     
 responseStream.subscribe(function(response){
-    console.log(response);
+    //console.log(response);
 });
 
 //Define 3 suggestion stream who get data from response stream
@@ -114,15 +114,15 @@ var suggestion3Stream = close3ClickStream.startWith('statup click') //Evol5: add
 
 //Subscribe suggestion stream
 suggestion1Stream.subscribe(function(suggestion){
-    renderSuggestion(suggestion, '.sugg1');
+    renderSuggestion(suggestion, '.rxjs .sugg1');
 });
 
 suggestion2Stream.subscribe(function(suggestion){
-    renderSuggestion(suggestion, '.sugg2');
+    renderSuggestion(suggestion, '.rxjs .sugg2');
 });
 
 suggestion3Stream.subscribe(function(suggestion){
-    renderSuggestion(suggestion, '.sugg3');
+    renderSuggestion(suggestion, '.rxjs .sugg3');
 });
 
 function renderSuggestion(suggestion, classname) {
@@ -152,10 +152,5 @@ function renderSuggestion(suggestion, classname) {
         followingStream.subscribe(function(response){
             $(classname + ' .relation .followings strong').text(response.length);
         });
-        
-        //console.log(followers);
     }
-    
-    //console.log(parentElement);
-    //console.log(parentElement2);
 }
