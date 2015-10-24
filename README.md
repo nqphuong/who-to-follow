@@ -5,5 +5,6 @@ The application of Reactive Programming Concept with RxJS library.
 
 In the first stage, the implementation consist to develop an simple interface with a list of 3 random users from git. We will have their username, avatar, link to homepage and their social relationships such as followers, starred, followings. We can also refresh to get new users or remove to get another one.
 
-
 ![GitHub Logo](https://github.com/nqphuong/who-to-follow/blob/master/images/1st_main_screen.png)
+
+In the second stage, we repeat the reactive box on the screen, but here we apply another reactive programming library named React (JavaScript library for creating user interfaces by Facebook and Instagram). This testing helps us to compare RxJS library about the performance, the comfortable code, ...
