@@ -6,6 +6,7 @@ var SuggestionItem = React.createClass({
             type:'get',
             data:{},
             success: function(data){
+                console.log("followers: "); console.log(data);
                 this.setState({num_followers:data.length});
             }.bind(this),
             error: function(xhr, status, err){
@@ -19,6 +20,7 @@ var SuggestionItem = React.createClass({
             type:'get',
             data:{},
             success: function(data){
+                console.log("starred: "); console.log(data);
                 this.setState({num_starred:data.length});
             }.bind(this),
             error: function(xhr, status, err){
@@ -32,6 +34,7 @@ var SuggestionItem = React.createClass({
             type:'get',
             data:{},
             success: function(data){
+                console.log("followings: "); console.log(data);
                 this.setState({num_followings:data.length});
             }.bind(this),
             error: function(xhr, status, err){
@@ -114,8 +117,13 @@ var SuggestionBox = React.createClass({
             type:'get',
             data:{},
             success: function(data){
+                //Get 3 random users
                 console.log(data);
-                this.setState({data:data});
+                var subdata = [];
+                for(var i=0; i < 3; i++){
+                    subdata.push(data[Math.floor(Math.random() * data.length)]);
+                }
+                this.setState({data:subdata});
             }.bind(this),
             error: function(xhr, status, err){
                 console.log('Err: Cannot acces to git server. ', status, err.toString());
@@ -123,7 +131,17 @@ var SuggestionBox = React.createClass({
         });
     },
     componentDidMount: function(){
-        this.loadDataFromServer()
+        this.loadDataFromServer();
+        
+        //Add click action event
+        jQuery('#refresh').bind("click", function(e){
+            e.preventDefault();
+            
+            //Load data from server
+            this.loadDataFromServer();
+            
+            return false;
+        }.bind(this));
     },
     getInitialState: function(){
         return {
@@ -135,7 +153,7 @@ var SuggestionBox = React.createClass({
             <div>
                 <div className="header">
                     Who to follow
-                    <span> . <a href="#" class="refresh">Refresh</a></span>
+                    <span> . <a id="refresh" href="#" class="refresh">Refresh</a></span>
                     <span> . <a href="#">View all</a></span>
                 </div>
                 <SuggestionList data={this.state.data} />
